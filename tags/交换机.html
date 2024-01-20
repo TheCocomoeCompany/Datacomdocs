@@ -5,7 +5,7 @@
 <meta name="generator" content="Docusaurus v3.1.0">
 <title data-rh="true">3 篇博文 含有标签「交换机」 | alone的博客</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://all-alone.cocomoe.cn/img/docusaurus-social-card.jpg"><meta data-rh="true" name="twitter:image" content="https://all-alone.cocomoe.cn/img/docusaurus-social-card.jpg"><meta data-rh="true" property="og:url" content="https://all-alone.cocomoe.cn/tags/交换机"><meta data-rh="true" property="og:locale" content="zh_Hans"><meta data-rh="true" name="docusaurus_locale" content="zh-Hans"><meta data-rh="true" name="docsearch:language" content="zh-Hans"><meta data-rh="true" property="og:title" content="3 篇博文 含有标签「交换机」 | alone的博客"><meta data-rh="true" name="docusaurus_tag" content="blog_tags_posts"><meta data-rh="true" name="docsearch:docusaurus_tag" content="blog_tags_posts"><link data-rh="true" rel="icon" href="/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://all-alone.cocomoe.cn/tags/交换机"><link data-rh="true" rel="alternate" href="https://all-alone.cocomoe.cn/tags/交换机" hreflang="zh-Hans"><link data-rh="true" rel="alternate" href="https://all-alone.cocomoe.cn/tags/交换机" hreflang="x-default"><link rel="alternate" type="application/rss+xml" href="/rss.xml" title="alone的博客 RSS Feed">
 <link rel="alternate" type="application/atom+xml" href="/atom.xml" title="alone的博客 Atom Feed"><link rel="stylesheet" href="/assets/css/styles.676b9aa2.css">
-<script src="/assets/js/runtime~main.bfaeb30c.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.cd6e25ba.js" defer="defer"></script>
 <script src="/assets/js/main.df492c6d.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -28,81 +28,32 @@
 <p>本实验模拟某公司网络场景。公司规模较大，员工 200 余名，内部网络是一个大的局域网。公司放置了多台接入交换机 (如 S1 和 S2)负责员工的网络接入。接入交换机之间通过汇聚交换机 S3 相连。公司通过划分 VLAN 来隔离广播域，由于员工较多，相同部门的员工通过不同交换机接入。为了保证在不同交换机下相同部门的员工能互相通信需要配置交换机之间链路为干道模式，以实现相同 VLAN 跨交换机通信。</p>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="实验拓扑">实验拓扑<a href="#实验拓扑" class="hash-link" aria-label="实验拓扑的直接链接" title="实验拓扑的直接链接">​</a></h3>
 <p><img loading="lazy" alt="图片" src="/assets/images/1-63507dc103634fdf5773dd919acbc9e1.png" width="852" height="556" class="img_ev3q"></p>
-<p><strong>/</strong> 实验任务配置 <strong>/</strong></p>
-<p>*<strong>1*</strong></p>
-<h2></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="实验任务配置">实验任务配置<a href="#实验任务配置" class="hash-link" aria-label="实验任务配置的直接链接" title="实验任务配置的直接链接">​</a></h3>
 <p><strong>IP 地址规划</strong></p>
 <table><thead><tr><th>设备</th><th>接口</th><th>IP地址/掩码</th><th>所属vlan</th></tr></thead><tbody><tr><td>PC1</td><td>E0/0/1</td><td>10.1.1.1/24</td><td>10</td></tr><tr><td>PC2</td><td>E0/0/1</td><td>10.1.1.2/24</td><td>20</td></tr><tr><td>PC3</td><td>E0/0/1</td><td>10.1.1.3/24</td><td>10</td></tr><tr><td>PC4</td><td>E0/0/1</td><td>10.1.1.4/24</td><td>20</td></tr></tbody></table>
-<p>*<strong>2*</strong></p>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="-1"><a href="#-1" class="hash-link" aria-label="-1的直接链接" title="-1的直接链接">​</a></h2>
-<p><strong>基本配置</strong></p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="基本配置">基本配置<a href="#基本配置" class="hash-link" aria-label="基本配置的直接链接" title="基本配置的直接链接">​</a></h2>
 <p><img loading="lazy" alt="图片" src="/assets/images/2-5250c088f146350f00af31a4c9751140.png" width="781" height="533" class="img_ev3q"></p>
 <p><img loading="lazy" alt="图片" src="/assets/images/3-8a856a559bae563ad549491aa9c86b2d.png" width="781" height="533" class="img_ev3q"></p>
 <p><strong>其他主机间互相通信测试和上述相同</strong></p>
-<p>*<strong>3*</strong></p>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="-2"><a href="#-2" class="hash-link" aria-label="-2的直接链接" title="-2的直接链接">​</a></h2>
-<p><strong>创建 vlan</strong></p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="创建-vlan">创建 vlan<a href="#创建-vlan" class="hash-link" aria-label="创建 vlan的直接链接" title="创建 vlan的直接链接">​</a></h3>
 <p>公司内网需要通过VLAN 的划分来隔离不同的部门，需要在3台交换机S1、S2、S3上都分别创建VLAN10和VLAN 20，研发部员工属于VLAN10，市场部员工属于VLAN20。</p>
-<ul>
-<li></li>
-<li></li>
-<li></li>
-</ul>
 <div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">[s1]vlan batch 10 20[s2]vlan batch 10 20[s3]vlan batch 10 20</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="复制代码到剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
-<p>*<strong>4*</strong></p>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="-3"><a href="#-3" class="hash-link" aria-label="-3的直接链接" title="-3的直接链接">​</a></h2>
-<p><strong>配置 access 接口</strong></p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="配置-access-接口">配置 access 接口<a href="#配置-access-接口" class="hash-link" aria-label="配置 access 接口的直接链接" title="配置 access 接口的直接链接">​</a></h3>
 <p>在S1 上配置E 0/0/2 和E 0/0/3 为Access 接口，并划分到相应的VLAN</p>
-<ul>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-</ul>
 <div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">[s1-Ethernet0/0/2]port link-type access[s1-Ethernet0/0/2]port default vlan 10[s1-Ethernet0/0/3]port link-type access[s1-Ethernet0/0/3]port default vlan 20</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="复制代码到剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
 <p>在S2 上配置E 0/0/3 和E 0/0/4 为Access 接口，并划分到相应的VLAN。</p>
-<ul>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-</ul>
 <div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">[s2-Ethernet0/0/3]port link-type access[s2-Ethernet0/0/3]port default vlan 10[s2-Ethernet0/0/4]port link-type access[s2-Ethernet0/0/4]port default vlan 20</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="复制代码到剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
-<p>*<strong>5*</strong></p>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="-4"><a href="#-4" class="hash-link" aria-label="-4的直接链接" title="-4的直接链接">​</a></h2>
-<p><strong>配置 trunk 接口</strong></p>
-<p>为了让交换机间能够识别和发送跨越交换机的VLAN报文，需要将交换机间相连的接口配置成为Trunk接口。配置时要明确被允许通过的VLAN，实现对VLAN流量传输的控制。</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="配置-trunk-接口">配置 trunk 接口<a href="#配置-trunk-接口" class="hash-link" aria-label="配置 trunk 接口的直接链接" title="配置 trunk 接口的直接链接">​</a></h3>
+<p>为了让交换机间能够识别和发送跨越交换机的VLAN报文，需要将交换机间相连的接口配置成为Trunk接口。  配置时要明确被允许通过的VLAN，实现对VLAN流量传输的控制。</p>
 <p>在S1上配置E 0/0/1为Trunk 接口，允许VLAN 10 和VLAN20通过</p>
-<ul>
-<li></li>
-<li></li>
-<li></li>
-</ul>
 <div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">[s1]int eth 0/0/1[s1-Ethernet0/0/1]port link-type trunk[s1-port-group-link-type]port trunk allow-pass  vlan 10 20</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="复制代码到剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
 <p>在S2上配置E 0/0/2为Trunk 接口，允许VLAN 10 和VLAN20通过</p>
-<ul>
-<li></li>
-<li></li>
-<li></li>
-</ul>
 <div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">[s2]int eth 0/0/2[s2-Ethernet0/0/2]port link-type trunk[s2-Ethernet0/0/2]port trunk allow-pass  vlan 10 20</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="复制代码到剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
 <p>在S3上配置GE 0/0/1 和GE 0/0/2 为Trunk 接口，允许所有VLAN 通过</p>
-<ul>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-</ul>
 <div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">[s3]int g 0/0/1[s3-GigabitEthernet0/0/1]port link-type trunk[s3-GigabitEthernet0/0/1]port trunk allow-pass  vlan 10 20[s3-GigabitEthernet0/0/1]int g 0/0/2[s3-GigabitEthernet0/0/2]port link-type trunk[s3-GigabitEthernet0/0/2]port trunk allow-pass vlan 10 20</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="复制代码到剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
-<p>*<strong>5*</strong></p>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="-5"><a href="#-5" class="hash-link" aria-label="-5的直接链接" title="-5的直接链接">​</a></h2>
-<p><strong>查看trunk 配置情况</strong></p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="查看trunk-配置情况">查看trunk 配置情况<a href="#查看trunk-配置情况" class="hash-link" aria-label="查看trunk 配置情况的直接链接" title="查看trunk 配置情况的直接链接">​</a></h3>
 <p><img loading="lazy" alt="图片" src="/assets/images/4-a1719f2c9c27e14e88fb36ed7dd02044.png" width="796" height="124" class="img_ev3q"></p>
-<p>*<strong>6*</strong></p>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="-6"><a href="#-6" class="hash-link" aria-label="-6的直接链接" title="-6的直接链接">​</a></h2>
-<p><strong>检查配置结果</strong></p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="检查配置结果">检查配置结果**<a href="#检查配置结果" class="hash-link" aria-label="检查配置结果**的直接链接" title="检查配置结果**的直接链接">​</a></h2>
 <p><img loading="lazy" alt="图片" src="/assets/images/5-0bfe1aeeb119760c800d42b37b15ecf1.png" width="781" height="533" class="img_ev3q"></p>
 <p><img loading="lazy" alt="图片" src="/assets/images/6-10cb0b929d42ec1d10cebc72863dec2a.png" width="781" height="533" class="img_ev3q"></p>
 <p><strong>本文完</strong></p></div><footer class="row docusaurus-mt-lg"><div class="col"><b>标签：</b><ul class="tags_jXut padding--none margin-left--sm"><li class="tag_QGVx"><a class="tag_zVej tagRegular_sFm0" href="/tags/vlan">VLAN</a></li><li class="tag_QGVx"><a class="tag_zVej tagRegular_sFm0" href="/tags/实验">实验</a></li><li class="tag_QGVx"><a class="tag_zVej tagRegular_sFm0" href="/tags/交换机">交换机</a></li></ul></div></footer></article><article class="margin-bottom--xl" itemprop="blogPost" itemscope="" itemtype="https://schema.org/BlogPosting"><meta itemprop="description" content="实验介绍:"><header><h2 class="title_f1Hy" itemprop="headline"><a itemprop="url" href="/VLAN 基础配置和配置Access 接口">VLAN 基础配置和配置Access 接口</a></h2><div class="container_mt6G margin-vert--md"><time datetime="2024-01-15T00:00:00.000Z" itemprop="datePublished">2024年1月15日</time> · <!-- -->阅读需 8 分钟</div><div class="margin-top--md margin-bottom--sm row"><div class="col col--6 authorCol_Hf19"><div class="avatar margin-bottom--sm"><a href="https://space.bilibili.com/21977351" target="_blank" rel="noopener noreferrer" class="avatar__photo-link"><img class="avatar__photo" src="https://static.xinyuu.info/static/all-alone.jpg" alt="all-alone" itemprop="image"></a><div class="avatar__intro" itemprop="author" itemscope="" itemtype="https://schema.org/Person"><div class="avatar__name"><a href="https://space.bilibili.com/21977351" target="_blank" rel="noopener noreferrer" itemprop="url"><span itemprop="name">all-alone</span></a></div><small class="avatar__subtitle" itemprop="description">Administrator</small></div></div></div></div></header><div class="markdown" itemprop="articleBody"><h2 class="anchor anchorWithStickyNavbar_LWe7" id="实验介绍">实验介绍:<a href="#实验介绍" class="hash-link" aria-label="实验介绍:的直接链接" title="实验介绍:的直接链接">​</a></h2>
@@ -112,7 +63,7 @@
 <p>传统的局域网是基于物理连接的，所有设备都连接在同一个物理网络上。而 VLAN 技术允许管理员根据不同的需求和安全策略，将设备划分为不同的逻辑组，即虚拟局域网。这样可以实现不同虚拟局域网之间的隔离，提高网络的可管理性和安全性。</p>
 <p>VLAN 可以通过端口、MAC 地址、IP 地址等方式进行划分和管理。在同一个物理网络中，不同的 VLAN 之间可以进行通信或隔离，类似于拆分出了多个独立的逻辑网络。这样可以实现更好的网络资源管理、提高带宽利用率、提供更精细的访问控制和安全策略等。</p>
 <p>VLAN 技术广泛应用于企业、机构、数据中心等网络环境中，能够提供更灵活、安全和高效的网络划分和管理。</p>
-<p>VLAN ID（VLAN 标识符）是用 于识别和区分不同 VLAN 的数字标识。每个 VLAN 都被分配一个唯一的 VLAN ID，用于在网络设备之间进行识别和通信。</p>
+<p>VLAN ID（VLAN 标识符）是用于识别和区分不同 VLAN 的数字标识。每个 VLAN 都被分配一个唯一的 VLAN ID，用 于在网络设备之间进行识别和通信。</p>
 <p>VLAN ID 是一个 12 位的数字，范围从 1 到 4094。其中，VLAN ID 1 和 VLAN ID 4095 有特殊用途，不能用于常规的用户数据流量。通常，管理员根据网络需求和设计，为不同的 VLAN 分配不同的 VLAN ID。</p>
 <p>在网络设备（如交换机）的配置中，将每个端口或接口与特定的 VLAN 关联起来，以确定哪些设备属于哪个 VLAN。当数据包进入交换机时，根据数据包的 VLAN ID 来决定将其发送到哪个 VLAN 中的设备。</p>
 <p>VLAN ID 在实现虚拟局域网时起到了关键的作用，它允许网络管理员轻松地将设备划分到不同的逻辑网络中，并为每个 VLAN 提供独立的网络环境和服务。通过使用 VLAN ID，不同 VLAN 之间的数据可以在同一物理网络上进行隔离和转发，提供更高的网络灵活性和管理能力。</p>
@@ -131,7 +82,7 @@
 <p><img loading="lazy" alt="图片" src="/assets/images/1-54e0b4f0a3cdb1278bc5963ae58bd2c6.png" width="829" height="625" class="img_ev3q"></p>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="实验任务配置">实验任务配置<a href="#实验任务配置" class="hash-link" aria-label="实验任务配置的直接链接" title="实验任务配置的直接链接">​</a></h2>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="ip-地址规划">IP 地址规划<a href="#ip-地址规划" class="hash-link" aria-label="IP 地址规划的直接链接" title="IP 地址规划的直接链接">​</a></h3>
-<table><thead><tr><th>设备</th><th>接口</th><th>IP地址/掩码</th><th>所属vlan</th></tr></thead><tbody><tr><td>PC1</td><td>E0/0/1</td><td>10.1.1.1/24</td><td>10</td></tr><tr><td>PC2</td><td>E0/0/1</td><td>10.1.1.2/24</td><td>10</td></tr><tr><td>PC3</td><td>E0/0/1</td><td>10.1.1.3/24</td><td>20</td></tr><tr><td>PC4</td><td>E0/0/1</td><td>10.1.1.4/24</td><td>30</td></tr><tr><td>PC5</td><td>E0/0/1</td><td>10.1.1.5/24</td><td>40</td></tr></tbody></table>
+<table><thead><tr><th>设备</th><th>接口</th><th>IP地址/掩码</th><th> 所属vlan</th></tr></thead><tbody><tr><td>PC1</td><td>E0/0/1</td><td>10.1.1.1/24</td><td>10</td></tr><tr><td>PC2</td><td>E0/0/1</td><td>10.1.1.2/24</td><td>10</td></tr><tr><td>PC3</td><td>E0/0/1</td><td>10.1.1.3/24</td><td>20</td></tr><tr><td>PC4</td><td>E0/0/1</td><td>10.1.1.4/24</td><td>30</td></tr><tr><td>PC5</td><td>E0/0/1</td><td>10.1.1.5/24</td><td>40</td></tr></tbody></table>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="基本配置">基本配置<a href="#基本配置" class="hash-link" aria-label="基本配置的直接链接" title="基本配置的直接链接">​</a></h3>
 <p><img loading="lazy" alt="图片" src="/assets/images/2-2c0b143b64df4394545aac3dde07f980.png" width="781" height="533" class="img_ev3q">
 <img loading="lazy" alt="图片" src="/assets/images/3-fe71adc9b1c1b3e5c536754bcc81d32f.png" width="781" height="533" class="img_ev3q">
@@ -151,8 +102,8 @@
 <img loading="lazy" alt="图片" src="/assets/images/9-0efaddbbc96e7c8383203a9f9dc2fadd.png" width="1080" height="675" class="img_ev3q"></p>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="检查配置结果">检查配置结果<a href="#检查配置结果" class="hash-link" aria-label="检查配置结果的直接链接" title="检查配置结果的直接链接">​</a></h2>
 <p><img loading="lazy" alt="图片" src="/assets/images/10-8aba8d0d7263a98898c4539401f6ceb6.png" width="781" height="533" class="img_ev3q"></p>
-<p>在交换机上将不同接口加入各自不同的 VLAN 中后，属于相同 VLAN 的接口处于同一个广播域，相互之间可以直接通信。属于不同 VLAN 的接口是处于不同的广播域，相互之间不能直接通信。</p></div><footer class="row docusaurus-mt-lg"><div class="col"><b>标签：</b><ul class="tags_jXut padding--none margin-left--sm"><li class="tag_QGVx"><a class="tag_zVej tagRegular_sFm0" href="/tags/vlan">VLAN</a></li><li class="tag_QGVx"><a class="tag_zVej tagRegular_sFm0" href="/tags/实验">实验</a></li><li class="tag_QGVx"><a class="tag_zVej tagRegular_sFm0" href="/tags/交换机">交换机</a></li></ul></div></footer></article><article class="margin-bottom--xl" itemprop="blogPost" itemscope="" itemtype="https://schema.org/BlogPosting"><meta itemprop="description" content="关于本实验的所需要的知识点补充"><header><h2 class="title_f1Hy" itemprop="headline"><a itemprop="url" href="/2021/1/20/VLAN 基础配置之理解Hybrid 接口">VLAN 基础配置之理解Hybrid 接口</a></h2><div class="container_mt6G margin-vert--md"><time datetime="2021-01-20T00:00:00.000Z" itemprop="datePublished">2021年1月20日</time> · <!-- -->阅读需 9 分钟</div><div class="margin-top--md margin-bottom--sm row"><div class="col col--6 authorCol_Hf19"><div class="avatar margin-bottom--sm"><a href="https://space.bilibili.com/21977351" target="_blank" rel="noopener noreferrer" class="avatar__photo-link"><img class="avatar__photo" src="https://static.xinyuu.info/static/all-alone.jpg" alt="all-alone" itemprop="image"></a><div class="avatar__intro" itemprop="author" itemscope="" itemtype="https://schema.org/Person"><div class="avatar__name"><a href="https://space.bilibili.com/21977351" target="_blank" rel="noopener noreferrer" itemprop="url"><span itemprop="name">all-alone</span></a></div><small class="avatar__subtitle" itemprop="description">Administrator</small></div></div></div></div></header><div class="markdown" itemprop="articleBody"><p>关于本实验的所需要的知识点补充</p>
-<p><em><strong>*hybrid*</strong></em> <strong>部分</strong></p>
+<p>在交换机上将不同接口加入各自不同的 VLAN 中后，属于相同 VLAN 的接口处于同一个广播域，相互之间可以直接通信。属于不同 VLAN 的接口是处于不同的广播域，相互之间不能直接通信。</p></div><footer class="row docusaurus-mt-lg"><div class="col"><b>标签：</b><ul class="tags_jXut padding--none margin-left--sm"><li class="tag_QGVx"><a class="tag_zVej tagRegular_sFm0" href="/tags/vlan">VLAN</a></li><li class="tag_QGVx"><a class="tag_zVej tagRegular_sFm0" href="/tags/实验">实验</a></li><li class="tag_QGVx"><a class="tag_zVej tagRegular_sFm0" href="/tags/交换机">交换机</a></li></ul></div></footer></article><article class="margin-bottom--xl" itemprop="blogPost" itemscope="" itemtype="https://schema.org/BlogPosting"><meta itemprop="description" content="关于本实验的所需要的知识点补充"><header><h2 class="title_f1Hy" itemprop="headline"><a itemprop="url" href="/2021/1/20/VLAN 基础配置之理解Hybrid 接口">VLAN 基础配置之理解Hybrid 接口</a></h2><div class="container_mt6G margin-vert--md"><time datetime="2021-01-20T00:00:00.000Z" itemprop="datePublished">2021年1月20日</time> · <!-- -->阅读需 9 分钟</div><div class="margin-top--md margin-bottom--sm row"><div class="col col--6 authorCol_Hf19"><div class="avatar margin-bottom--sm"><a href="https://space.bilibili.com/21977351" target="_blank" rel="noopener noreferrer" class="avatar__photo-link"><img class="avatar__photo" src="https://static.xinyuu.info/static/all-alone.jpg" alt="all-alone" itemprop="image"></a><div class="avatar__intro" itemprop="author" itemscope="" itemtype="https://schema.org/Person"><div class="avatar__name"><a href="https://space.bilibili.com/21977351" target="_blank" rel="noopener noreferrer" itemprop="url"><span itemprop="name">all-alone</span></a></div><small class="avatar__subtitle" itemprop="description">Administrator</small></div></div></div></div></header><div class="markdown" itemprop="articleBody"><h2 class="anchor anchorWithStickyNavbar_LWe7" id="关于本实验的所需要的知识点补充">关于本实验的所需要的知识点补充<a href="#关于本实验的所需要的知识点补充" class="hash-link" aria-label="关于本实验的所需要的知识点补充的直接链接" title="关于本实验的所需要的知识点补充的直接链接">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="hybrid">hybrid<a href="#hybrid" class="hash-link" aria-label="hybrid的直接链接" title="hybrid的直接链接">​</a></h3>
 <p>在华为交换机中，Hybrid 接口通常指的是支持同时传输多种不同协议或介质的接口。它是指在单个接口上可以同时支持不同类型的数据传输，比如同时支持以太网和光纤通信。</p>
 <p>具体来说，在华为交换机中的 Hybrid 接口一般是指具备多种物理接口和传输方式的端口。这些接口可以同时支持不同速率、不同类型的数据传输，例如同时支持 Ethernet（以太网）和 Fiber Channel（光纤通道）的数据传输。</p>
 <p>Hybrid 接口的设计使得华为交换机可以更灵活地适应各种网络需求，并提供更多样化的连接选项。通过配置 Hybrid 接口，网络管理员可以根据实际需求选择不同的物理介质和协议，以满足不同设备和应用之间的连接要求。</p>
@@ -160,36 +111,28 @@
 <p>在华为交换机中，Hybrid 接口具有以下作用：</p>
 <blockquote>
 <ol>
-<li>
-<p>多协议支持：Hybrid 接口可以同时支持多种不同的协议，如以太网、光纤通道（Fiber Channel）等。这样可以满足网络中的不同设备和应用之间的协议要求，实现灵活的数据传输。</p>
-</li>
-<li>
-<p>多介质支持：Hybrid 接口可以同时支持不同的物理介质，如 RJ-45（铜缆）和光纤等。这样可以适应不同的网络环境和需求，实现灵活的网络连接。</p>
-</li>
-<li>
-<p>弹性配置：通过配置 Hybrid 接口，可以根据实际需求选择合适的协议和介质，并灵活调整接口参数。这样可以根据网络的变化和要求来优化和调整接口的配置。</p>
-</li>
-<li>
-<p>提高网络利用率：Hybrid 接口的多协议和多介质支持，使得网络设备可以更有效地利用资源。例如，可以通过 Hybrid 接口将不同类型的设备连接到同一个交换机上，从而简化网络拓扑结构，提高网络资源的利用效率。</p>
-</li>
+<li>多协议支持：Hybrid 接口可以同时支持多种不同的协议，如以太网、光纤通道（Fiber Channel）等。这样可以满足网络中的不同设备和应用之间的协议要求，实现灵活的数据传输。</li>
+<li>多介质支持：Hybrid 接口可以同时支持不同的物理介质，如 RJ-45（铜缆）和光纤等。这样可以适应不同的网络环境和需求，实现灵活的网络连接。</li>
+<li>弹性配置：通过配置 Hybrid 接口，可以根据实际需求选择合适的协议和介质，并灵活调整接口参数。这样可以根据网络的变化和要求来优化和调整接口的配置。</li>
+<li>提高网络利用率：Hybrid 接口的多协议和多介质支持，使得网络设备可以更有效地利用资源。例如，可以通过 Hybrid 接口将不同类型的设备连接到同一个交换机上，从而简化网络拓扑结构，提高网络资源的利用效率。
+总之，Hybrid 接口在华为交换机中的作用是为了提供更灵活、可扩展和兼容的网络连接选项，以满足不同设备和应用之间的协议和介质要求，并提高网络资源的利用效率。</li>
 </ol>
 </blockquote>
-<p>总之，Hybrid 接口在华为交换机中的作用是为了提供更灵活、可扩展和兼容的网络连接选项，以满足不同设备和应用之间的协议和介质要求，并提高网络资源的利用效率。</p>
-<p><strong>/</strong> 实验目的 <strong>/</strong></p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="实验目的">实验目的<a href="#实验目的" class="hash-link" aria-label="实验目的的直接链接" title="实验目的的直接链接">​</a></h2>
 <ul>
 <li>掌握配置Hybrid 接口的方法</li>
 <li>理解Hybrid 接口处理Untagged 数据帧过程</li>
 <li>理解Hybrid 接口处理Tagged 数据帧过程</li>
 <li>理解Hybrid 接口的应用场景</li>
 </ul>
-<p><strong>/</strong> 实验背景 <strong>/</strong></p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="实验背景">实验背景<a href="#实验背景" class="hash-link" aria-label="实验背景的直接链接" title="实验背景的直接链接">​</a></h2>
 <p>某企业二层网络使用两台 S3700 交换机 S1 和 S2，且两台设备在不同的楼层。网络管理员规划了 3 个不同 VLAN，HR 部门使用 VLAN10，市场部门使用 VLAN 20，IT 部门使用 VLAN30。现在需要让处于不同楼层的 HR 部门和市场部门实现部门内部通信，而两部门之间不允许互相通信;IT 部门可以访问任意部门。可以通过配置 Hybrid 接口来实现较复杂的 VLAN 控制。</p>
-<p><strong>/</strong> 实验拓扑 <strong>/</strong></p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="实验拓扑">实验拓扑<a href="#实验拓扑" class="hash-link" aria-label="实验拓扑的直接链接" title="实验拓扑的直接链接">​</a></h3>
 <p><img loading="lazy" alt="图片" src="/assets/images/1-28def0a1ffd84043838c970c994615b1.png" width="716" height="553" class="img_ev3q"></p>
-<p><strong>/</strong> 实验任务配置 <strong>/</strong></p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="实验任务配置">实验任务配置<a href="#实验任务配置" class="hash-link" aria-label="实验任务配置的直接链接" title="实验任务配置的直接链接">​</a></h3>
 <p><strong>IP 地址规划</strong></p>
 <table><thead><tr><th>设备</th><th>接口</th><th>地址</th><th>vlan</th></tr></thead><tbody><tr><td>PC1</td><td>E0/0/1</td><td>192.168.1.1</td><td>20</td></tr><tr><td>PC2</td><td>E0/0/1</td><td>192.168.1.2</td><td>10</td></tr><tr><td>PC3</td><td>E0/0/1</td><td>192.168.1.3</td><td>20</td></tr><tr><td>PC4</td><td>E0/0/1</td><td>192.168.1.4</td><td>10</td></tr><tr><td>PC5</td><td>E0/0/1</td><td>192.168.1.100</td><td>30</td></tr></tbody></table>
-<p><strong>基本配置</strong></p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="基本配置">基本配置<a href="#基本配置" class="hash-link" aria-label="基本配置的直接链接" title="基本配置的直接链接">​</a></h3>
 <p><img loading="lazy" alt="图片" src="/assets/images/2-49235d8ce6008978e3d00fae267a3099.png" width="781" height="533" class="img_ev3q"></p>
 <p><img loading="lazy" alt="图片" src="/assets/images/3-20e7b010ba93afb242dbed06de6be3af.png" width="781" height="533" class="img_ev3q"></p>
 <p><em><strong>*其他主机间互相通信测试和上述相同*</strong></em></p>
@@ -215,7 +158,7 @@
 <div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">[S1]int Eth 0/0/4[S1-Ethernet0/0/4]port hybrid pvid vlan 30[S1-Ethernet0/0/4]port hybrid untagged vlan 10 20 30[S1]int Eth 0/0/2[S1-Ethernet0/0/2]port hybrid untagged vlan 20 30[S1]int Eth 0/0/3[S1-Ethernet0/0/3]port hybrid untagged vlan 10 30[S1]int Eth 0/0/1[S1-Ethernet0/0/1]port hybrid tagged vlan 10 20 30</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="复制代码到剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
 <p>S2的配置</p>
 <div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">[S2]int Eth 0/0/1[S2-Ethernet0/0/1]port hybrid tagged vlan 10 20 30[S2]int Eth 0/0/2[S2-Ethernet0/0/2]port hybrid untagged vlan 20 30[S2]int Eth 0/0/3[S2-Ethernet0/0/3]port hybrid untagged vlan 10 30</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="复制代码到剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
-<p><strong>结果验证</strong></p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="结果验证">结果验证<a href="#结果验证" class="hash-link" aria-label="结果验证的直接链接" title="结果验证的直接链接">​</a></h2>
 <p><img loading="lazy" alt="图片" src="/assets/images/6-17fe2c8587cbdd0b462451ef9462fca5.png" width="781" height="533" class="img_ev3q"></p>
 <p><img loading="lazy" alt="图片" src="/assets/images/7-4d33ea464595748aa64fd486c1773a9d.png" width="781" height="533" class="img_ev3q"></p>
 <p><img loading="lazy" alt="图片" src="/assets/images/8-ce79268bec1e1ebd9f0f4104af4443e3.png" width="781" height="533" class="img_ev3q"></p>
