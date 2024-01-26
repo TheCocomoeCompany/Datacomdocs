@@ -2,11 +2,105 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://all-alone.cocomoe.cn/</id>
     <title>alone的博客 Blog</title>
-    <updated>2024-01-20T00:00:00.000Z</updated>
+    <updated>2024-01-26T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://all-alone.cocomoe.cn/"/>
     <subtitle>alone的博客 Blog</subtitle>
     <icon>https://all-alone.cocomoe.cn/img/favicon.ico</icon>
+    <entry>
+        <title type="html"><![CDATA[利用单臂路由实现VLAN间路由]]></title>
+        <id>https://all-alone.cocomoe.cn/one-armed-routing-vlan</id>
+        <link href="https://all-alone.cocomoe.cn/one-armed-routing-vlan"/>
+        <updated>2024-01-26T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[实验介绍]]></summary>
+        <content type="html"><![CDATA[<h2 class="anchor anchorWithStickyNavbar_LWe7" id="实验介绍">实验介绍<a href="https://all-alone.cocomoe.cn/one-armed-routing-vlan#%E5%AE%9E%E9%AA%8C%E4%BB%8B%E7%BB%8D" class="hash-link" aria-label="实验介绍的直接链接" title="实验介绍的直接链接">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="单臂路由">单臂路由<a href="https://all-alone.cocomoe.cn/one-armed-routing-vlan#%E5%8D%95%E8%87%82%E8%B7%AF%E7%94%B1" class="hash-link" aria-label="单臂路由的直接链接" title="单臂路由的直接链接">​</a></h3>
+<p>单臂路由（One-armed routing）是一种网络路由配置方法，通常在网络设备（如防火墙或负载均衡器）的部署中使用。在单臂路由中，网络设备只使用一个物理接口与网络中的其他设备进行通信。</p>
+<p>具体来说，单臂路由通过将网络设备的一个接口（称为单臂接口）连接到网络的主干或核心部分，然后使用该接口作为该设备与其他设备进行通信的路径。这意味着所有的数据流量都需要通过单臂接口进入和离开网络设备。</p>
+<p>单臂路由的主要目的是实现流量监控、访问控制和网络安全策略等。通过集中管理和控制网络流量，可以更容易地实施网络安全措施，如防火墙规则、负载均衡策略等。</p>
+<p>然而，单臂路由也可能导致一些性能和可扩展性方面的限制。由于所有的数据流量都必须经过单臂接口，可能会产生瓶颈和延迟。另外，单臂路由也可能限制网络的规模和扩展性。</p>
+<p>需要注意的是，单臂路由是一种特定的网络配置方法，并不是所有情况下都适用。在实际应用中，需要根据具体的网络需求和环境来选择使用单臂路由还是其他路由配置方法。</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="实验目的">实验目的<a href="https://all-alone.cocomoe.cn/one-armed-routing-vlan#%E5%AE%9E%E9%AA%8C%E7%9B%AE%E7%9A%84" class="hash-link" aria-label="实验目的的直接链接" title="实验目的的直接链接">​</a></h3>
+<blockquote>
+<ol>
+<li>理解单臂路由的应用场景</li>
+<li>掌握路由器子接口的配置方法·</li>
+<li>掌握子接口封装 VLAN 的配置方法</li>
+<li>理解单臂路由的工作原理</li>
+</ol>
+</blockquote>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="实验内容">实验内容<a href="https://all-alone.cocomoe.cn/one-armed-routing-vlan#%E5%AE%9E%E9%AA%8C%E5%86%85%E5%AE%B9" class="hash-link" aria-label="实验内容的直接链接" title="实验内容的直接链接">​</a></h3>
+<p>本实验模拟公司网络场景。路由器 R1 是公司的出口网关，员工 PC 通过接入层交换机(如 S2 和 S3)接入公司网络，接入层交换机又通过汇聚交换机 S1 与路由器 R1 相连。公司内部网络通过划分不同的 VLAN 隔离了不同部门之间的二层通信，保证各部门间的信息安全，但是由于业务需要，经理、市场部和人事部之间需要能实现跨 VLAN 通信，网络管理员决定借助路由器的三层功能，通过配置单臂路由来实现。</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="实验拓扑">实验拓扑<a href="https://all-alone.cocomoe.cn/one-armed-routing-vlan#%E5%AE%9E%E9%AA%8C%E6%8B%93%E6%89%91" class="hash-link" aria-label="实验拓扑的直接链接" title="实验拓扑的直接链接">​</a></h3>
+<p><img loading="lazy" src="https://all-alone.cocomoe.cn/assets/images/1-8dc3b7cad7682820a1d82c54f77d332e.png" width="830" height="689" class="img_ev3q"></p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="实验编址">实验编址<a href="https://all-alone.cocomoe.cn/one-armed-routing-vlan#%E5%AE%9E%E9%AA%8C%E7%BC%96%E5%9D%80" class="hash-link" aria-label="实验编址的直接链接" title="实验编址的直接链接">​</a></h3>
+<table><tbody><tr><th>设备</th><th>接口</th><th>编址</th><th>网关</th></tr><tr><th rowspan="4">R1</th></tr><tr><td>G0/0/1.1</td><td>192.168.1.254/24</td></tr><tr><td>G0/0/1.2</td><td>192.168.2.254/24</td></tr><tr><td>G0/0/1.3</td><td>192.168.1.254/24</td></tr><tr><th>PC1</th><td>E0/0/1</td><td>192.168.1.1/24</td><td>192.168.1.254</td></tr><tr><th>PC2</th><td>E0/0/1</td><td>192.168.2.1/24</td><td>192.168.2.254</td></tr><tr><th>PC3</th><td>E0/0/1</td><td>192.168.3.1/24</td><td>192.168.3.254</td></tr></tbody></table>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="实验步骤">实验步骤<a href="https://all-alone.cocomoe.cn/one-armed-routing-vlan#%E5%AE%9E%E9%AA%8C%E6%AD%A5%E9%AA%A4" class="hash-link" aria-label="实验步骤的直接链接" title="实验步骤的直接链接">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="创建vlan并配置accesstrunk接口">创建VLAN并配置Access、Trunk接口<a href="https://all-alone.cocomoe.cn/one-armed-routing-vlan#%E5%88%9B%E5%BB%BAvlan%E5%B9%B6%E9%85%8D%E7%BD%AEaccesstrunk%E6%8E%A5%E5%8F%A3" class="hash-link" aria-label="创建VLAN并配置Access、Trunk接口的直接链接" title="创建VLAN并配置Access、Trunk接口的直接链接">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="s2的配置代码">S2的配置代码<a href="https://all-alone.cocomoe.cn/one-armed-routing-vlan#s2%E7%9A%84%E9%85%8D%E7%BD%AE%E4%BB%A3%E7%A0%81" class="hash-link" aria-label="S2的配置代码的直接链接" title="S2的配置代码的直接链接">​</a></h4>
+<p>[S2]<code>vlan 10</code></p>
+<p>[S2-vlan10]<code>vlan 20</code></p>
+<p>[S2-vlan20]<code>interface Ethernet 0/0/1</code></p>
+<p>[S2-Ethernet0/0/1]<code>port link-type access</code></p>
+<p>[S2-Ethernet0/0/1]<code>port default vlan 10</code></p>
+<p>[S2-Ethernet0/0/1]<code>interface Ethernet 0/0/2</code></p>
+<p>[S2-Ethernet0/0/2]<code>port link-type access</code></p>
+<p>[S2-Ethernet0/0/2]<code>port default vlan 20</code></p>
+<p>[S2]<code>interface GigabitEthernet 0/0/2</code></p>
+<p>[S2-GigabitEthernet0/0/2]<code>port link-type trunk</code></p>
+<p>[S2-GigabitEthernet0/0/2]<code>port trunk allow-pass vlan all</code></p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="s3的配置代码">S3的配置代码<a href="https://all-alone.cocomoe.cn/one-armed-routing-vlan#s3%E7%9A%84%E9%85%8D%E7%BD%AE%E4%BB%A3%E7%A0%81" class="hash-link" aria-label="S3的配置代码的直接链接" title="S3的配置代码的直接链接">​</a></h4>
+<p>[S3]vlan 30[S3-vlan30]<code>interface Ethernet 0/0/1</code></p>
+<p>[S3-Ethernet0/0/1]<code>port link-type access</code></p>
+<p>[S3-Ethernet0/0/1]<code>port default vlan 30</code></p>
+<p>[S3]<code>interface GigabitEthernet 0/0/2</code></p>
+<p>[S3-GigabitEthernet0/0/2]<code>port link-type trunk</code></p>
+<p>[S3-GigabitEthernet0/0/2]<code>port trunk allow-pass vlan all</code></p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="s1的配置代码">S1的配置代码<a href="https://all-alone.cocomoe.cn/one-armed-routing-vlan#s1%E7%9A%84%E9%85%8D%E7%BD%AE%E4%BB%A3%E7%A0%81" class="hash-link" aria-label="S1的配置代码的直接链接" title="S1的配置代码的直接链接">​</a></h4>
+<p>[S1]<code>vlan 10</code></p>
+<p>[S1-vlan10]<code>vlan 20</code></p>
+<p>[S1-vlan20]<code>vlan 30</code></p>
+<p>[S1-vlan30]<code>interface GigabitEthernet 0/0/2</code></p>
+<p>[S1-GigabitEthernet0/0/2]<code>port link-type trunk</code></p>
+<p>[S1-GigabitEthernet0/0/2]<code>port trunk allow-pass vlan all</code></p>
+<p>[S1-GigabitEthernet0/0/2]<code>interface GigabitEthernet 0/0/3</code></p>
+<p>[S1-GigabitEthernet0/0/3]<code>port link-type trunk</code></p>
+<p>[S1-GigabitEthernet0/0/3] <code>port trunk allow-pass vlan all</code></p>
+<p>[S1-GigabitEthernet0/0/3]<code>interface GigabitEthernet 0/0/1</code></p>
+<p>[S1-GigabitEthernet0/0/1]<code>port link-type trunks</code></p>
+<p>[S1-GigabitEthernet0/0/1]<code>port trunk allow-pass vlan all</code></p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="配置路由器子接口和ip地址">配置路由器子接口和IP地址<a href="https://all-alone.cocomoe.cn/one-armed-routing-vlan#%E9%85%8D%E7%BD%AE%E8%B7%AF%E7%94%B1%E5%99%A8%E5%AD%90%E6%8E%A5%E5%8F%A3%E5%92%8Cip%E5%9C%B0%E5%9D%80" class="hash-link" aria-label="配置路由器子接口和IP地址的直接链接" title="配置路由器子接口和IP地址的直接链接">​</a></h3>
+<ol>
+<li>在 R1 上创建子接口 GE 0/0/1.1，配置 IP 地址 192.168.1.254/24,作为人事部网关地址。</li>
+<li>在 R1 上创建子接口 GE 0/0/1.2，配置 IP 地址 192.168.2.254/24,作为市场部网关地址。</li>
+<li>在 R1 上创建子接口 GE 0/0/1.3，配置 IP 地址 192.168.3.254/24,作为经理网关地址。</li>
+</ol>
+<p>[R1]<code>interface GigabitEthernet 0/0/1.1</code></p>
+<p>[R1-GigabitEthernet0/0/1.1]<code>ip address 192.168.1.254 24</code></p>
+<p>[R1]<code>interface GigabitEthernet 0/0/1.2</code></p>
+<p>[R1-GigabitEthernet0/0/1.2]<code>ip address 192.168.2.254 24</code></p>
+<p>[R1]<code>interface GigabitEthernet 0/0/1.3</code></p>
+<p>[R1-GigabitEthernet0/0/1.3]<code>ip address 192.168.3.254 24</code></p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="配置路由器子接口封装vlan">配置路由器子接口封装VLAN<a href="https://all-alone.cocomoe.cn/one-armed-routing-vlan#%E9%85%8D%E7%BD%AE%E8%B7%AF%E7%94%B1%E5%99%A8%E5%AD%90%E6%8E%A5%E5%8F%A3%E5%B0%81%E8%A3%85vlan" class="hash-link" aria-label="配置路由器子接口封装VLAN的直接链接" title="配置路由器子接口封装VLAN的直接链接">​</a></h3>
+<p>在R1的子接口GE 0/0/1.1 上封装VLAN 10，在子接口GE 0/0/1.2上封装VLAN 20，在子接口GE 0/0/1.3上封装VLAN 30，并开启子接口的ARP 广播功能。</p>
+<p>使用arp broadcast enable 命令开启子接口的ARP 广播功能。如果不配置该命令，将会导致该子接口无法主动发送ARP广播报文，以及向外转发IP报文。</p>
+<p>[R1]<code>interface GigabitEthernet 0/0/1.1</code></p>
+<p>[R1-GigabitEthernet0/0/1.1]<code>dot1q termination vid 10</code></p>
+<p>[R1-GigabitEthernet0/0/1.1]<code>arp broadcast enable</code></p>
+<p>同理配置R1的子接口GE 0/0/1.2 和GE 0/0/1.3。</p>
+<p>[R1]<code>interface GigabitEthernet 0/0/1.2</code></p>
+<p>[R1-GigabitEthernet0/0/1.2]<code>dot1q termination vid 20</code></p>
+<p>[R1-GigabitEthernet0/0/1.2]<code>arp broadcast enable</code></p>
+<p>[R1]<code>interface GigabitEthernet 0/0/1.3</code></p>
+<p>[R1-GigabitEthernet0/0/1.3]<code>dot1q termination vid 30</code></p>
+<p>[R1-GigabitEthernet0/0/1.3]<code>arp broadcast enable</code></p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="测试结果">测试结果<a href="https://all-alone.cocomoe.cn/one-armed-routing-vlan#%E6%B5%8B%E8%AF%95%E7%BB%93%E6%9E%9C" class="hash-link" aria-label="测试结果的直接链接" title="测试结果的直接链接">​</a></h2>
+<p><img loading="lazy" src="https://all-alone.cocomoe.cn/assets/images/2-f65daa4dfce11732ced81e7615aa4475.png" width="799" height="613" class="img_ev3q"></p>
+<p><img loading="lazy" src="https://all-alone.cocomoe.cn/assets/images/3-134de2506984372e7d70919cb1d46018.png" width="799" height="613" class="img_ev3q"></p>]]></content>
+        <category label="VLAN" term="VLAN"/>
+        <category label="实验" term="实验"/>
+        <category label="单臂路由" term="单臂路由"/>
+    </entry>
     <entry>
         <title type="html"><![CDATA[VLAN 基础配置之理解Hybrid 接口]]></title>
         <id>https://all-alone.cocomoe.cn/vlan-set-switch-hybrid</id>
@@ -294,7 +388,7 @@
 <p><strong>配置 R1-&gt;R3-&gt;R2 作为 R1 的 LoopBack0 到 R2 的 LoopBack0 接口的备份路径 # 配置 R1 和 R2 上的静态路由</strong></p>
 <p>[R1]ip route-static 10.0.1.2 32 10.0.13.3 preference 100</p>
 <p>[R2]ip route-static 10.0.1.1 32 10.0.23.3 preference 100</p>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="查看-r1-和-r2-上的路由表"><strong>查看 R1 和 R2 上的路由表</strong><a href="https://all-alone.cocomoe.cn/static-router-test#%E6%9F%A5%E7%9C%8B-r1-%E5%92%8C-r2-%E4%B8%8A%E7%9A%84%E8%B7%AF%E7%94%B1%E8%A1%A8" class="hash-link" aria-label="查看-r1-和-r2-上的路由表的直接链接" title="查看-r1-和-r2-上的路由表的直接链接">​</a></h2>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="查看-r1-和-r2-上的路由表"><strong>查看 R1 和 R2 上的路由表</strong><a href="https://all-alone.cocomoe.cn/static-router-test#%E6%9F%A5%E7%9C%8B-r1-%E5%92%8C-r2-%E4%B8%8A%E7%9A%84%E8%B7%AF%E7%94%B1%E8%A1%A8" class="hash-link" aria-label="查看-r1-和-r2-��上的路由表的直接链接" title="查看-r1-和-r2-上的路由表的直接链接">​</a></h2>
 <p><img loading="lazy" alt="图片" src="https://all-alone.cocomoe.cn/assets/images/6-8367c619d14cbec7e6e730824ff0842e.PNG" width="1080" height="659" class="img_ev3q"></p>
 <p><img loading="lazy" alt="图片" src="https://all-alone.cocomoe.cn/assets/images/7-4f1c3788482c45cd2c902b12a3ea563f.PNG" width="1080" height="662" class="img_ev3q"></p>
 <p>此时配置的 preference 为 100 的静态路由没有被加载到路由表中如果需要显示100的路由，则需要关闭接口，随着高优先级路由失效，低优先级路由被激活</p>]]></content>
