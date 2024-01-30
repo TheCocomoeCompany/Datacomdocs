@@ -382,7 +382,7 @@
 <p><strong>配置 R1-&gt;R3-&gt;R2 作为 R1 的 LoopBack0 到 R2 的 LoopBack0 接口的备份路径 # 配置 R1 和 R2 上的静态路由</strong></p>
 <p>[R1]ip route-static 10.0.1.2 32 10.0.13.3 preference 100</p>
 <p>[R2]ip route-static 10.0.1.1 32 10.0.23.3 preference 100</p>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="查看-r1-和-r2-上的路由表"><strong>查看 R1 和 R2 上的路由表</strong><a href="https://hcia.cocomoe.cn/static-router-test#%E6%9F%A5%E7%9C%8B-r1-%E5%92%8C-r2-%E4%B8%8A%E7%9A%84%E8%B7%AF%E7%94%B1%E8%A1%A8" class="hash-link" aria-label="查看-r1-和-r2-上的路由表的直接链接" title="查��看-r1-和-r2-上的路由表的直接链接">​</a></h2>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="查看-r1-和-r2-上的路由表"><strong>查看 R1 和 R2 上的路由表</strong><a href="https://hcia.cocomoe.cn/static-router-test#%E6%9F%A5%E7%9C%8B-r1-%E5%92%8C-r2-%E4%B8%8A%E7%9A%84%E8%B7%AF%E7%94%B1%E8%A1%A8" class="hash-link" aria-label="查看-r1-和-r2-上的路由表的直接链接" title="查看-r1-和-r2-上的路由表的直接链接">​</a></h2>
 <p><img loading="lazy" alt="图片" src="https://hcia.cocomoe.cn/assets/images/6-8367c619d14cbec7e6e730824ff0842e.PNG" width="1080" height="659" class="img_ev3q"></p>
 <p><img loading="lazy" alt="图片" src="https://hcia.cocomoe.cn/assets/images/7-4f1c3788482c45cd2c902b12a3ea563f.PNG" width="1080" height="662" class="img_ev3q"></p>
 <p>此时配置的 preference 为 100 的静态路由没有被加载到路由表中如果需要显示100的路由，则需要关闭接口，随着高优先级路由失效，低优先级路由被激活</p>]]></content:encoded>
